@@ -1,0 +1,2 @@
+[18-Aug-2016 15:32:44 UTC] PHP Fatal error:  Class 'WP_Filesystem_Base' not found in /home/adr1anblackhurst/public_html/_boogiemeister.com/wp-admin/includes/class-wp-filesystem-ftpext.php on line 17
+[31-Dec-2016 11:25:01 America/Chicago] PHP Fatal error:  Class 'WP_Filesystem_Base' not found in /home3/mauibeats/public_html/boogiemeister.com/wp-admin/includes/class-wp-filesystem-ftpext.php on line 17

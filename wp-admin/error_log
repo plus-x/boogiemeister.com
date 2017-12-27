@@ -1,0 +1,12 @@
+[16-Apr-2015 04:43:59 UTC] PHP Warning:  json_encode(): Invalid UTF-8 sequence in argument in /home/adr1anblackhurst/public_html/_boogiemeister.com/wp-includes/functions.php on line 2663
+[02-Jan-2017 06:46:55 America/Chicago] PHP Fatal error:  Call to undefined function __() in /home3/mauibeats/public_html/boogiemeister.com/wp-admin/menu.php on line 23
+[18-Jul-2017 00:31:32 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[18-Jul-2017 00:31:32 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[01-Aug-2017 08:02:04 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[01-Aug-2017 08:02:04 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[17-Aug-2017 20:57:27 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[17-Aug-2017 20:57:27 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[22-Aug-2017 23:16:54 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[22-Aug-2017 23:16:54 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[06-Sep-2017 10:25:36 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
+[06-Sep-2017 10:25:36 UTC] PHP Warning:  implode(): Invalid arguments passed in /home3/mauibeats/public_html/boogiemeister.com/wp-content/mu-plugins/endurance-page-cache.php on line 463
