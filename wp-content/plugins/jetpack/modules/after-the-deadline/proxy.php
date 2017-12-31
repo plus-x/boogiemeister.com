@@ -19,6 +19,8 @@ function AtD_http_post( $request, $host, $path, $port = 80 ) {
 		/**
 		* Change the timeout time for AtD post.
 		*
+		* @module after-the-deadline
+		*
 		* @since 1.2.3
 		*
 		* @param int $var Timeout time in seconds, default 15.
@@ -39,6 +41,8 @@ function AtD_http_post( $request, $host, $path, $port = 80 ) {
 	if ( is_wp_error( $response ) ) {
 		/**
 		 * Fires when there is a post error to AtD.
+		 *
+		 * @module after-the-deadline
 		 *
 		 * @since 1.2.3
 		 *
@@ -70,6 +74,8 @@ function AtD_redirect_call() {
 	/**
 	 * Change the AtD service domain.
 	 *
+	 * @module after-the-deadline
+	 *
 	 * @since 1.2.3
 	 *
 	 * @param string $var The URL for AtD service domain, default is service.afterthedeadline.com.
@@ -81,8 +87,8 @@ function AtD_redirect_call() {
 	$atd_lang = get_locale();
 
 	// If we're on WPCOM, this function should be available.
-	if ( function_exists( 'get_user_lang_code' ) ) {
-		$atd_lang = get_user_lang_code( $user->ID );
+	if ( function_exists( 'get_user_locale' ) ) {
+		$atd_lang = get_user_locale( $user->ID );
 	}
 
 	if ( ! empty( $atd_lang ) ) {

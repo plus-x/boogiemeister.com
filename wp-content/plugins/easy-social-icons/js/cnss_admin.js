@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
         }
         //Extend the wp.media object
         custom_logo_uploader = wp.media.frames.file_frame = wp.media({
-            title: 'Choose icon',
+            title: 'Select icon',
             button: {
                 text: 'Set icon image'
             },
@@ -24,12 +24,13 @@ jQuery(document).ready(function($) {
             $('#image_file').val(attachment.url);
 			$('#logoimg').attr('width','32');
 			$('#logoimg').attr('height','32');
-			$('#logoimg').attr('src',attachment.url);
+            $('#logoimg').attr('src',attachment.url);
+            $('#fa-placeholder').hide();
+			$('#logoimg').show();
 			//$('#ftrimg').attr('src',attachment.sizes.thumbnail.url);
 			
         });
         //Open the uploader dialog
         custom_logo_uploader.open();
     });
-	
 });
