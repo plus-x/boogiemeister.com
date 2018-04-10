@@ -43,6 +43,21 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             $action->delete();
         }
 
+	    $chunked_option_flag = 'nf_form_' . $this->_id . '_chunks';
+        $chunked_option_value = get_option( $chunked_option_flag );
+	    // if there is nf_form_x_chunks option, we need to delete those
+	    if( $chunked_option_value ) {
+		    // if we have chunk'd it, get the list of chunks
+		    $form_chunks = explode( ',', $chunked_option_value );
+
+		    //get the option value of each chunk and concat them into the form
+		    foreach( $form_chunks as $chunk ){
+			    delete_option( $chunk );
+		    }
+
+		    delete_option( $chunked_option_flag );
+	    }
+
         delete_option( 'nf_form_' . $this->_id );
     }
 
@@ -95,6 +110,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             if( $is_conversion ) {
                 $field_id = $settings[ 'id' ];
                 $field = Ninja_Forms()->form($form_id)->field( $field_id )->get();
+                $field->save();
             } else {
                 unset( $settings[ 'id' ] );
                 $settings[ 'created_at' ] = current_time( 'mysql' );
@@ -165,9 +181,10 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $wpdb->query( $wpdb->prepare(
            "
            INSERT INTO {$wpdb->prefix}nf3_form_meta ( `parent_id`, `key`, `value` )
-                SELECT %d, `key`, CASE WHEN `key` = '_seq_num' THEN 0 ELSE `value` END
+                SELECT %d, `key`, `value`
                 FROM   {$wpdb->prefix}nf3_form_meta
-                WHERE  parent_id = %d;
+                WHERE  parent_id = %d
+                AND `key` != '_seq_num';
            ", $new_form_id, $form_id
         ));
 
@@ -632,7 +649,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             $passwordconfirm = array_merge( $field, array(
                 'id' => '',
                 'type' => 'passwordconfirm',
-                'label' => $field[ 'label' ] . ' ' . __( 'Confirm' ),
+                'label' => $field[ 'label' ] . ' ' . __( 'Confirm', 'ninja-forms' ),
                 'confirm_field' => 'password_' . $field[ 'id' ]
             ));
             $field[ 'new_fields' ][] = $passwordconfirm;

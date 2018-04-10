@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 3.2.6
+Version: 3.2.18
 Author: The WP Ninjas
 Author URI: http://ninjaforms.com
 Text Domain: ninja-forms
@@ -53,7 +53,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         /**
          * @since 3.0
          */
-        const VERSION = '3.2.6';
+        const VERSION = '3.2.18';
 
         const WP_MIN_VERSION = '4.7';
 
@@ -225,10 +225,14 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                  * AJAX Controllers
                  */
                 self::$instance->controllers[ 'form' ]          = new NF_AJAX_Controllers_Form();
+                self::$instance->controllers[ 'batch_process' ]          = new
+                NF_AJAX_REST_BatchProcess();
                 self::$instance->controllers[ 'preview' ]       = new NF_AJAX_Controllers_Preview();
                 self::$instance->controllers[ 'submission' ]    = new NF_AJAX_Controllers_Submission();
                 self::$instance->controllers[ 'savedfields' ]   = new NF_AJAX_Controllers_SavedFields();
+                self::$instance->controllers[ 'deletealldata' ] = new NF_AJAX_Controllers_DeleteAllData();
                 self::$instance->controllers[ 'jserror' ]       = new NF_AJAX_Controllers_JSError();
+                self::$instance->controllers[ 'dispatchpoints' ] = new NF_AJAX_Controllers_DispatchPoints();
 
                 /*
                  * REST Controllers
@@ -271,7 +275,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 new NF_Admin_CPT_Submission();
                 new NF_Admin_CPT_DownloadAllSubmissions();
                 require_once Ninja_Forms::$dir . 'lib/StepProcessing/menu.php';
-                
+
                 /*
                  * Submission Metabox
                  */
@@ -318,6 +322,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 self::$instance->notices = new NF_Admin_Notices();
 
                 self::$instance->widgets[] = new NF_Widget();
+
+                /*
+                 * Gutenberg
+                 */
+                self::$instance->gutenblock = new NF_FormBlock();
 
                 /*
                  * Opt-In Tracking
@@ -375,7 +384,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
             add_filter( 'ninja_forms_dashboard_menu_items', array( $this, 'maybe_hide_dashboard_items' ) );
         }
-        
+
         public function maybe_hide_dashboard_items( $items )
         {
             $disable_marketing = false;
@@ -618,8 +627,6 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
             }
         }
 
-
-
         /*
          * PRIVATE METHODS
          */
@@ -787,7 +794,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
          * Make sure that we've reported our opt-in.
          */
         if( get_option( 'ninja_forms_optin_reported', 0 ) ) return;
-        
+
         Ninja_Forms()->dispatcher()->send( 'optin', array( 'send_email' => 1 ) );
         // Debounce opt-in dispatch.
         update_option( 'ninja_forms_optin_reported', 1 );
