@@ -22,3 +22,4 @@
 [04-Feb-2018 00:13:05 America/Chicago] PHP Fatal error:  Call to undefined function wp_nav_menu() in /home3/mauibeats/boogiemeister.com/wp-content/themes/bones/footer.php on line 6
 [04-Feb-2018 00:13:06 America/Chicago] PHP Fatal error:  Call to undefined function wp_nav_menu() in /home3/mauibeats/boogiemeister.com/wp-content/themes/bones/footer.php on line 6
 [09-Apr-2018 10:02:53 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home3/mauibeats/boogiemeister.com/wp-content/themes/bones/404.php on line 1
+[13-Apr-2018 04:08:32 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home3/mauibeats/boogiemeister.com/wp-content/themes/bones/archive.php on line 1
